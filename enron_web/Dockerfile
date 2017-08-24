@@ -10,4 +10,4 @@ ENV APP_OPTS=
 COPY entrypoint.sh /entrypoint.sh  
 COPY enron_web.jar /$ARTIFACT_NAME         
 EXPOSE $SERVER_PORT 
-ENTRYPOINT [\"./entrypoint.sh\"] 
+ENTRYPOINT ["/entrypoint.sh"] 

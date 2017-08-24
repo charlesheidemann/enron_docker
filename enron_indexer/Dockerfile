@@ -8,4 +8,4 @@ ENV MAX_CONNECTION=25
 ENV JAVA_OPTS=
 COPY entrypoint.sh /entrypoint.sh  
 COPY enron_indexer.jar /$ARTIFACT_NAME         
-ENTRYPOINT [\"./entrypoint.sh\"] 
+ENTRYPOINT ["/entrypoint.sh"] 
