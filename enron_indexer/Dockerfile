@@ -9,5 +9,6 @@ ENV JAVA_OPTS=
 COPY ./enron_indexer.jar /$ARTIFACT_NAME
 COPY ./enron.json /$INPUT_FILE
 COPY ./entrypoint.sh /entrypoint.sh  
+WORKDIR /
 RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
