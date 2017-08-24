@@ -6,8 +6,7 @@ ENV ES_HOST=127.0.0.1:9200
 ENV VERBOSE=false
 ENV MAX_CONNECTION=25
 ENV JAVA_OPTS=
-COPY entrypoint.sh /entrypoint.sh  
-COPY enron_indexer.jar /$ARTIFACT_NAME
-WORKDIR / 
+COPY ./entrypoint.sh /entrypoint.sh  
+COPY ./enron_indexer.jar /$ARTIFACT_NAME
 USER root
 ENTRYPOINT ["/entrypoint.sh"]
