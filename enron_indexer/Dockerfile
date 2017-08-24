@@ -9,4 +9,5 @@ ENV JAVA_OPTS=
 COPY entrypoint.sh /entrypoint.sh  
 COPY enron_indexer.jar /$ARTIFACT_NAME
 WORKDIR / 
+USER root
 ENTRYPOINT ["/entrypoint.sh"]

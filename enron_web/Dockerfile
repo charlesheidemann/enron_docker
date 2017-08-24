@@ -11,4 +11,5 @@ COPY entrypoint.sh /entrypoint.sh
 COPY enron_web.jar /$ARTIFACT_NAME         
 EXPOSE $SERVER_PORT
 WORKDIR / 
+USER root
 ENTRYPOINT ["/entrypoint.sh"] 
