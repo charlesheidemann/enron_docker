@@ -2,10 +2,10 @@ FROM openjdk:8-jre-alpine
 
 MAINTAINER Charles Heidemann <charles.heidemann@gmail.com>
 
-ENV WORK_DIR /work
-ENV ARTIFACT_NAME app.jar
-ENV INPUT_FILE enron.json
-ENV VERBOSE false
+ENV WORK_DIR=/work
+ENV ARTIFACT_NAME=app.jar
+ENV INPUT_FILE=enron.json
+ENV VERBOSE=false
 ENV ES_HOST=127.0.0.1:9200
 ENV MAX_CONNECTION=25
 ENV JAVA_OPTS=
