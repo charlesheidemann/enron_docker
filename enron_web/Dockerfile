@@ -9,6 +9,6 @@ ENV JAVA_OPTS=-Dserver.port=$SERVER_PORT -Delasticsearch.host=$ES_HOST -Delastic
 ENV APP_OPTS=
 COPY ./entrypoint.sh /entrypoint.sh  
 COPY ./enron_web.jar /$ARTIFACT_NAME
-RUN chmod 555 /entrypoint.sh         
+RUN chmod +x /entrypoint.sh         
 EXPOSE $SERVER_PORT
 ENTRYPOINT ["/entrypoint.sh"] 
