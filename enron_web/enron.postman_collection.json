@@ -1,0 +1,76 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Enron",
+		"_postman_id": "efcb095f-47be-7aef-cfa4-3eac1c878ce3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "teste_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Check id\"] = jsonData.content[0].id === \"52af48b5d55148fa0c19964c\";",
+							"tests[\"Check sender\"] = jsonData.content[0].sender === \"rosalee.fleming@enron.com\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://10.200.11.75:9000/api/email/search?page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"10",
+						"200",
+						"11",
+						"75"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"email",
+						"search"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\":\"(_id: \\\"52af48b5d55148fa0c19964c\\\")\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
