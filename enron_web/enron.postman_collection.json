@@ -26,7 +26,7 @@
 			],
 			"request": {
 				"url": {
-					"raw": "http://10.200.11.75:9000/api/email/search?page=0&size=10",
+					"raw": "http://192.168.2.20:9000/api/email/search?page=0&size=10",
 					"protocol": "http",
 					"host": [
 						"10",
