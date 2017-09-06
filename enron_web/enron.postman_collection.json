@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "teste_id",
+			"name": "searchById",
 			"event": [
 				{
 					"listen": "test",
@@ -18,6 +18,9 @@
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
 							"",
 							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"Check numberOfElements\"] = jsonData.numberOfElements === 1",
+							"tests[\"Check size\"] = jsonData.content.length === 1",
 							"tests[\"Check id\"] = jsonData.content[0].id === \"52af48b5d55148fa0c19964c\";",
 							"tests[\"Check sender\"] = jsonData.content[0].sender === \"rosalee.fleming@enron.com\";"
 						]
@@ -65,6 +68,104 @@
 					"mode": "raw",
 					"raw": "{\"query\":\"(_id: \\\"52af48b5d55148fa0c19964c\\\")\"}"
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "searchBySender",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Check numberOfElements\"] = jsonData.numberOfElements === 6",
+							"tests[\"Check totalElements\"] = jsonData.totalElements === 6",
+							"tests[\"Check size\"] = jsonData.content.length === 6",
+							"",
+							"for (var i in jsonData.content){",
+							"    var obj = jsonData.content[i];",
+							"    tests[\"Check row \"+i] = obj.sender.indexOf(\"tori\") !== -1;",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://{{host}}:9000/api/email/search?page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"email",
+						"search"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\":\"(sender : tori)\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"Check id\"] = jsonData.id === \"52af48b6d55148fa0c199686\"",
+							"tests[\"Check sender\"] = jsonData.sender === \"tori.wells@enron.com\"",
+							"tests[\"Check to\"] = jsonData.to[0] === \"gayla.seiter@enron.com\"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{host}}:9000/api/email/52af48b6d55148fa0c199686",
+				"method": "GET",
+				"header": [],
+				"body": {},
 				"description": ""
 			},
 			"response": []
