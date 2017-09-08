@@ -32,7 +32,7 @@ pipeline {
     }
 
     environment {
-        DOCKER_HOST_URL = "tcp://${params.DOCKER_HOST_IP}:${params.DOCKER_TCP_PORT}"
+        DOCKER_HOST_URL = "tcp://${DOCKER_HOST_IP}:${DOCKER_TCP_PORT}"
         URL_ENRON_INDEXER = "${NEXUS_URL}/service/local/artifact/maven/redirect?r=snapshots&g=com.enron.indexer&a=enron_indexer&v=LATEST"
         URL_ENRON_WEB = "${NEXUS_URL}/service/local/artifact/maven/redirect?r=snapshots&g=com.enron.web&a=enron_web&v=LATEST"
     }
