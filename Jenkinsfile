@@ -26,7 +26,7 @@ pipeline {
         )
         string(
             name: 'POSTMAN_ENVIRONMENT',
-            description: 'Docker host TCP port',
+            description: 'Postman environment configuration',
             defaultValue: 'local.postman_environment.json'
         )
     }
